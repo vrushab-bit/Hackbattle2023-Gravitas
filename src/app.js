@@ -4,6 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const connect = require('./config/database');
 const ApiRoutes = require('./routes/index');
+const Student = require('./models/student');
 
 
 const setUpAndStartServer = async ()=>{
@@ -14,9 +15,12 @@ const setUpAndStartServer = async ()=>{
    app.use('/api',ApiRoutes);
 
    await connect();
-   app.listen(PORT,()=>{
+
+   app.listen(PORT,async()=>{
+
     console.log(`Server started on ${PORT}`);
-   })
+    
+   });
 
 }
 
